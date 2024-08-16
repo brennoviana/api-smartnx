@@ -2,17 +2,21 @@ import { User } from "../model/userModel";
 import { Request, Response } from "express";
 
 class UserController {
+  static getErrorMessage(error: unknown): string {
+    return error instanceof Error
+      ? error.message
+      : "An unknown error occurred.";
+  }
+
   async getUsers(req: Request, res: Response) {
     try {
       const users = await User.findAll();
-      res.status(200).send(users);
+      return res.status(200).send(users);
     } catch (error) {
       console.error(error);
-      if (error instanceof Error) {
-        res.status(500).send({ message: error.message });
-      } else {
-        res.status(500).send({ message: "An unknown error occurred." });
-      }
+      return res
+        .status(500)
+        .send({ message: UserController.getErrorMessage(error) });
     }
   }
 
@@ -20,31 +24,26 @@ class UserController {
     try {
       const user = await User.findByPk(req.params.id);
       if (user) {
-        res.status(200).json(user);
-      } else {
-        res.status(404).send({ message: "User not found." });
+        return res.status(200).json(user);
       }
+      return res.status(404).send({ message: "User not found." });
     } catch (error) {
       console.error(error);
-      if (error instanceof Error) {
-        res.status(500).send({ message: error.message });
-      } else {
-        res.status(500).send({ message: "An unknown error occurred." });
-      }
+      return res
+        .status(500)
+        .send({ message: UserController.getErrorMessage(error) });
     }
   }
 
   async createUser(req: Request, res: Response) {
     try {
       const newUser = await User.create(req.body);
-      res.status(201).json(newUser);
+      return res.status(201).json(newUser);
     } catch (error) {
       console.error(error);
-      if (error instanceof Error) {
-        res.status(500).send({ message: error.message });
-      } else {
-        res.status(500).send({ message: "An unknown error occurred." });
-      }
+      return res
+        .status(500)
+        .send({ message: UserController.getErrorMessage(error) });
     }
   }
 
@@ -55,17 +54,14 @@ class UserController {
       });
       if (updated) {
         const updatedUser = await User.findByPk(req.params.id);
-        res.status(200).json(updatedUser);
-      } else {
-        res.status(404).send({ message: "User not found." });
+        return res.status(200).json(updatedUser);
       }
+      return res.status(404).send({ message: "User not found." });
     } catch (error) {
       console.error(error);
-      if (error instanceof Error) {
-        res.status(500).send({ message: error.message });
-      } else {
-        res.status(500).send({ message: "An unknown error occurred." });
-      }
+      return res
+        .status(500)
+        .send({ message: UserController.getErrorMessage(error) });
     }
   }
 
@@ -75,17 +71,14 @@ class UserController {
         where: { id: req.params.id },
       });
       if (deleted) {
-        res.status(204).send();
-      } else {
-        res.status(404).send({ message: "User not found." });
+        return res.status(200).send({ message: "User successfully deleted." });
       }
+      return res.status(404).send({ message: "User not found." });
     } catch (error) {
       console.error(error);
-      if (error instanceof Error) {
-        res.status(500).send({ message: error.message });
-      } else {
-        res.status(500).send({ message: "An unknown error occurred." });
-      }
+      return res
+        .status(500)
+        .send({ message: UserController.getErrorMessage(error) });
     }
   }
 }
