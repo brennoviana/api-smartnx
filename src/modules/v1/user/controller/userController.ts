@@ -1,3 +1,4 @@
+import { UniqueConstraintError } from "sequelize";
 import { User } from "../model/userModel";
 import { Request, Response } from "express";
 
@@ -41,6 +42,9 @@ class UserController {
       return res.status(201).json(newUser);
     } catch (error) {
       console.error(error);
+      if (error instanceof UniqueConstraintError) {
+        return res.status(409).send({ message: "CPF already exists." });
+      }
       return res
         .status(500)
         .send({ message: UserController.getErrorMessage(error) });
@@ -59,6 +63,9 @@ class UserController {
       return res.status(404).send({ message: "User not found." });
     } catch (error) {
       console.error(error);
+      if (error instanceof UniqueConstraintError) {
+        return res.status(409).send({ message: "CPF already exists." });
+      }
       return res
         .status(500)
         .send({ message: UserController.getErrorMessage(error) });
