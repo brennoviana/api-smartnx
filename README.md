@@ -33,6 +33,10 @@ Após iniciar os containers, a aplicação estará acessível em http://localhos
 docker-compose down
 ```
 
+## Modelagem do Banco de Dados
+
+[![Diagrama ERD](./docs/ERD.png)](https://dbdiagram.io/d/66bf97728b4bb5230e533493)
+
 ### Observações
 
 O arquivo `.env` foi incluído no repositório para facilitar o uso e configuração do projeto. Ele contém as variáveis de ambiente necessárias para a execução do banco de dados MySQL e configurações do Node.js.

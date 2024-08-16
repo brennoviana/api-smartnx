@@ -1,4 +1,3 @@
-// eslint.config.mjs
 import typescript from '@typescript-eslint/parser';
 import airbnb from 'eslint-config-airbnb-typescript';
 import eslintPluginImport from 'eslint-plugin-import';
