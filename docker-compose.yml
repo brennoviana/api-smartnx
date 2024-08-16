@@ -1,4 +1,16 @@
+version: '3.8'
+
 services:
+  express:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    depends_on:
+      - mysql
+
   mysql:
     image: mysql:8.0
     container_name: mysql
@@ -10,6 +22,12 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   mysql_data:
