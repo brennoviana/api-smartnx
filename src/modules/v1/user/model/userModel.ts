@@ -16,22 +16,7 @@ interface UserAttributes {
 
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
 
-class User
-  extends Model<UserAttributes, UserCreationAttributes>
-  implements UserAttributes
-{
-  public id!: number;
-  public name!: string;
-  public cpf!: string;
-  public address!: string;
-  public number!: string;
-  public city!: string;
-  public state!: string;
-  public zip_code!: string;
-
-  public readonly created_at!: Date;
-  public readonly updated_at!: Date;
-}
+class User extends Model<UserAttributes, UserCreationAttributes> {}
 
 User.init(
   {
