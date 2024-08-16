@@ -1,6 +1,7 @@
 import { UniqueConstraintError } from "sequelize";
 import { User } from "../model/userModel";
 import { Request, Response } from "express";
+import { userSchema } from "../schema/userSchema";
 
 class UserController {
   static getErrorMessage(error: unknown): string {
@@ -38,6 +39,11 @@ class UserController {
 
   async createUser(req: Request, res: Response) {
     try {
+      const { error } = userSchema.validate(req.body);
+      if (error) {
+        return res.status(400).send({ message: error.details[0].message });
+      }
+
       const newUser = await User.create(req.body);
       return res.status(201).json(newUser);
     } catch (error) {
@@ -53,6 +59,10 @@ class UserController {
 
   async updateUser(req: Request, res: Response) {
     try {
+      const { error } = userSchema.validate(req.body);
+      if (error) {
+        return res.status(400).send({ message: error.details[0].message });
+      }
       const [updated] = await User.update(req.body, {
         where: { id: req.params.id },
       });
