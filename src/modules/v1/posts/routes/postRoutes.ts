@@ -2,18 +2,18 @@ import { Router } from "express";
 import { postController } from "../controller/postController";
 // import { userSchema } from "../schema/userSchema";
 // import { validateRequestSchema } from "../middlewares/validateRequestSchema";
-// import { validateUserExists } from "../middlewares/validateUserExists";
+import { validatePostExists } from "../middlewares/validatePostExists";
 
 const postRoutes = Router();
 
 postRoutes.get("/", postController.getPosts);
 
-postRoutes.get("/:id", postController.getPostById);
+postRoutes.get("/:id", validatePostExists, postController.getPostById);
 
 postRoutes.post("/", postController.createPost);
 
-// userRoutes.put("/:id", userController.updateUser);
+postRoutes.put("/:id", validatePostExists, postController.updatePost);
 
-// userRoutes.delete("/:id", userController.deleteUser);
+postRoutes.delete("/:id", validatePostExists, postController.deletePost);
 
 export { postRoutes };

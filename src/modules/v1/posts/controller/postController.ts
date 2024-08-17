@@ -50,6 +50,41 @@ class PostController {
         .send({ message: PostController.getErrorMessage(error) });
     }
   }
+
+  async deletePost(req: Request, res: Response) {
+    try {
+      const deleted = await Post.destroy({
+        where: { id: req.params.id },
+      });
+      if (deleted) {
+        return res.status(200).send({ message: "Post successfully deleted." });
+      }
+      return res.status(400).send({ message: "Failed to delete post." });
+    } catch (error) {
+      console.error(error);
+      return res
+        .status(500)
+        .send({ message: PostController.getErrorMessage(error) });
+    }
+  }
+
+  async updatePost(req: Request, res: Response) {
+    try {
+      const [updated] = await Post.update(req.body, {
+        where: { id: req.params.id },
+      });
+      if (updated) {
+        const updatedPost = await Post.findByPk(req.params.id);
+        return res.status(200).json(updatedPost);
+      }
+      return res.status(400).send({ message: "Failed to update post." });
+    } catch (error) {
+      console.error(error);
+      return res
+        .status(500)
+        .send({ message: PostController.getErrorMessage(error) });
+    }
+  }
 }
 
 const postController = new PostController();
