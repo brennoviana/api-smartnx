@@ -24,11 +24,7 @@ class UserController {
 
   async getUserById(req: Request, res: Response) {
     try {
-      const user = await User.findByPk(req.params.id);
-      if (user) {
-        return res.status(200).json(user);
-      }
-      return res.status(404).send({ message: "User not found." });
+      return res.status(200).json(req.user);
     } catch (error) {
       console.error(error);
       return res
@@ -70,7 +66,7 @@ class UserController {
         const updatedUser = await User.findByPk(req.params.id);
         return res.status(200).json(updatedUser);
       }
-      return res.status(404).send({ message: "User not found." });
+      return res.status(400).send({ message: "Failed to update user." });
     } catch (error) {
       console.error(error);
       if (error instanceof UniqueConstraintError) {
@@ -90,7 +86,7 @@ class UserController {
       if (deleted) {
         return res.status(200).send({ message: "User successfully deleted." });
       }
-      return res.status(404).send({ message: "User not found." });
+      return res.status(400).send({ message: "Failed to delete user." });
     } catch (error) {
       console.error(error);
       return res
