@@ -37,6 +37,17 @@ docker-compose down
 
 [![Diagrama ERD](./docs/erd.png)](https://dbdiagram.io/d/66bf97728b4bb5230e533493)
 
+## Postman Collection
+
+Você pode baixar a collection do Postman para realizar as requests [aqui](collection.json).
+
+### Importar a Coleção no Postman
+
+1. Abra o Postman.
+2. Vá até "File" > "Import".
+3. Selecione a aba "Upload Files".
+4. Escolha o arquivo `.json` baixado.
+
 ### Observações
 
 O arquivo `.env` foi incluído no repositório para facilitar o uso e configuração do projeto. Ele contém as variáveis de ambiente necessárias para a execução do banco de dados MySQL e configurações do Node.js.
