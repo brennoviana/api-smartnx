@@ -1,16 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "commonjs",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "typeRoots": ["./src/types", "./node_modules/@types"], // Inclua o caminho para suas definições de tipos
-    "baseUrl": "./"
+    "target": "ESNext",                          
+    "module": "CommonJS",                        
+    "strict": true,                              
+    "esModuleInterop": true,                     
+    "skipLibCheck": true,                        
+    "forceConsistentCasingInFileNames": true,    
+    "outDir": "./dist"                           
   },
-  "include": ["src/**/*.ts", "src/types/custom.d.ts"], // Certifique-se de incluir o caminho do arquivo custom.d.ts
-  "exclude": ["node_modules"]
+  "include": ["src/**/*.ts"],                    
+  "exclude": ["node_modules"]                    
 }
