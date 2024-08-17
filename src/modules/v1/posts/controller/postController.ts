@@ -1,14 +1,9 @@
 import { UniqueConstraintError } from "sequelize";
 import { Post } from "../model/postModel";
 import { Request, Response } from "express";
+import { UseFulFunctions } from "../../../../../useFulFunctions/UseFulFunctions";
 
 class PostController {
-  static getErrorMessage(error: unknown): string {
-    return error instanceof Error
-      ? error.message
-      : "An unknown error occurred.";
-  }
-
   async getPosts(req: Request, res: Response) {
     try {
       const posts = await Post.findAll();
@@ -20,7 +15,7 @@ class PostController {
       console.error(error);
       return res
         .status(500)
-        .send({ message: PostController.getErrorMessage(error) });
+        .send({ message: UseFulFunctions.getErrorMessage(error) });
     }
   }
 
@@ -35,7 +30,7 @@ class PostController {
       console.error(error);
       return res
         .status(500)
-        .send({ message: PostController.getErrorMessage(error) });
+        .send({ message: UseFulFunctions.getErrorMessage(error) });
     }
   }
 
@@ -47,7 +42,7 @@ class PostController {
       console.error(error);
       return res
         .status(500)
-        .send({ message: PostController.getErrorMessage(error) });
+        .send({ message: UseFulFunctions.getErrorMessage(error) });
     }
   }
 
@@ -64,7 +59,7 @@ class PostController {
       console.error(error);
       return res
         .status(500)
-        .send({ message: PostController.getErrorMessage(error) });
+        .send({ message: UseFulFunctions.getErrorMessage(error) });
     }
   }
 
@@ -82,7 +77,7 @@ class PostController {
       console.error(error);
       return res
         .status(500)
-        .send({ message: PostController.getErrorMessage(error) });
+        .send({ message: UseFulFunctions.getErrorMessage(error) });
     }
   }
 }

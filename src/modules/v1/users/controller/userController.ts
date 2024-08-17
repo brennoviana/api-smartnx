@@ -1,14 +1,9 @@
 import { UniqueConstraintError } from "sequelize";
 import { User } from "../model/userModel";
 import { Request, Response } from "express";
+import { UseFulFunctions } from "../../../../../useFulFunctions/UseFulFunctions";
 
 class UserController {
-  static getErrorMessage(error: unknown): string {
-    return error instanceof Error
-      ? error.message
-      : "An unknown error occurred.";
-  }
-
   async getUsers(req: Request, res: Response) {
     try {
       const users = await User.findAll();
@@ -20,7 +15,7 @@ class UserController {
       console.error(error);
       return res
         .status(500)
-        .send({ message: UserController.getErrorMessage(error) });
+        .send({ message: UseFulFunctions.getErrorMessage(error) });
     }
   }
 
@@ -31,7 +26,7 @@ class UserController {
       console.error(error);
       return res
         .status(500)
-        .send({ message: UserController.getErrorMessage(error) });
+        .send({ message: UseFulFunctions.getErrorMessage(error) });
     }
   }
 
@@ -46,7 +41,7 @@ class UserController {
       }
       return res
         .status(500)
-        .send({ message: UserController.getErrorMessage(error) });
+        .send({ message: UseFulFunctions.getErrorMessage(error) });
     }
   }
 
@@ -67,7 +62,7 @@ class UserController {
       }
       return res
         .status(500)
-        .send({ message: UserController.getErrorMessage(error) });
+        .send({ message: UseFulFunctions.getErrorMessage(error) });
     }
   }
 
@@ -84,7 +79,7 @@ class UserController {
       console.error(error);
       return res
         .status(500)
-        .send({ message: UserController.getErrorMessage(error) });
+        .send({ message: UseFulFunctions.getErrorMessage(error) });
     }
   }
 }
