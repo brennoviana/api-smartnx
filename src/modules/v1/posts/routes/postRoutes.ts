@@ -2,7 +2,7 @@ import { Router } from "express";
 import { postController } from "../controller/postController";
 import { postCreateSchema } from "../schema/postCreateSchema";
 import { postUpdateSchema } from "../schema/postUpdateSchema";
-import { validateRequestSchema } from "../../../../../generic-middlewares/validateRequestSchema";
+import { validateRequestSchema } from "../../../../generic-middlewares/validateRequestSchema";
 import { validatePostExists } from "../middlewares/validatePostExists";
 import { validateUserBodyExists } from "../middlewares/validateUserBodyExists";
 

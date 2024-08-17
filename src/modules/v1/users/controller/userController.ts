@@ -1,7 +1,7 @@
 import { UniqueConstraintError } from "sequelize";
 import { User } from "../model/userModel";
 import { Request, Response } from "express";
-import { UseFulFunctions } from "../../../../../useFulFunctions/UseFulFunctions";
+import { UseFulFunctions } from "../../../../useFulFunctions/UseFulFunctions";
 
 class UserController {
   async getUsers(req: Request, res: Response) {

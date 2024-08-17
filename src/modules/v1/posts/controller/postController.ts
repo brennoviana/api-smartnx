@@ -1,6 +1,6 @@
 import { Post } from "../model/postModel";
 import { Request, Response } from "express";
-import { UseFulFunctions } from "../../../../../useFulFunctions/UseFulFunctions";
+import { UseFulFunctions } from "../../../../useFulFunctions/UseFulFunctions";
 
 class PostController {
   async getPosts(req: Request, res: Response) {
