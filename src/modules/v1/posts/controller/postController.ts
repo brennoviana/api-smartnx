@@ -45,9 +45,6 @@ class PostController {
       return res.status(201).json(newPost);
     } catch (error) {
       console.error(error);
-      if (error instanceof UniqueConstraintError) {
-        return res.status(409).send({ message: "Post title already exists." });
-      }
       return res
         .status(500)
         .send({ message: PostController.getErrorMessage(error) });
