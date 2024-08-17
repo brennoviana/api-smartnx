@@ -35,7 +35,7 @@ docker-compose down
 
 ## Modelagem do Banco de Dados
 
-[![Diagrama ERD](./docs/ERD.png)](https://dbdiagram.io/d/66bf97728b4bb5230e533493)
+[![Diagrama ERD](./docs/erd.png)](https://dbdiagram.io/d/66bf97728b4bb5230e533493)
 
 ### Observações
 
