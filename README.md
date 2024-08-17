@@ -39,7 +39,7 @@ docker-compose down
 
 ## Postman Collection
 
-Você pode baixar a collection do Postman para realizar as requests [aqui](collection.json).
+Você pode baixar a collection do Postman para realizar as requests [aqui](docs/collection.json).
 
 ### Importar a Coleção no Postman
 
