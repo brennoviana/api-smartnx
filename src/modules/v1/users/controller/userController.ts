@@ -12,6 +12,9 @@ class UserController {
   async getUsers(req: Request, res: Response) {
     try {
       const users = await User.findAll();
+      if (users.length == 0) {
+        return res.status(200).send({ message: "No users registered." });
+      }
       return res.status(200).send(users);
     } catch (error) {
       console.error(error);
