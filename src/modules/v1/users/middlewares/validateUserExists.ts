@@ -7,7 +7,13 @@ async function validateUserExists(
   next: NextFunction,
 ) {
   try {
-    const user = await User.findByPk(req.params.id);
+    const userId = req.body.userId ?? req.params.id;
+
+    if (!userId) {
+      return res.status(400).json({ error: "User ID is required" });
+    }
+
+    const user = await User.findByPk(userId);
     if (!user) {
       return res.status(404).send({ message: "User not found." });
     }
