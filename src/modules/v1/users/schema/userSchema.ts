@@ -7,7 +7,7 @@ const userSchema = Joi.object({
   number: Joi.string().max(10).required(),
   city: Joi.string().max(100).required(),
   state: Joi.string().length(2).required(),
-  zip_code: Joi.string().length(8).pattern(/^\d+$/).required(),
+  zipCode: Joi.string().length(8).pattern(/^\d+$/).required(),
 });
 
 export { userSchema };

@@ -38,16 +38,16 @@ User.init(
       type: DataTypes.STRING(2),
       allowNull: false,
     },
-    zip_code: {
+    zipCode: {
       type: DataTypes.STRING(8),
       allowNull: false,
     },
-    created_at: {
+    createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    updated_at: {
+    updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
