@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { userController } from "../controller/userController";
-import { userSchema } from "../schema/userSchema";
+import { userCreateSchema } from "../schema/userCreateSchema";
 import { validateRequestSchema } from "../../../../../generic-middlewares/validateRequestSchema";
 import { validateUserExists } from "../middlewares/validateUserExists";
+import { userUpdateSchema } from "../schema/userUpdateSchema";
 
 const userRoutes = Router();
 
@@ -12,14 +13,14 @@ userRoutes.get("/:id", validateUserExists, userController.getUserById);
 
 userRoutes.post(
   "/",
-  validateRequestSchema(userSchema),
+  validateRequestSchema(userCreateSchema),
   userController.createUser,
 );
 
 userRoutes.put(
   "/:id",
   validateUserExists,
-  validateRequestSchema(userSchema),
+  validateRequestSchema(userUpdateSchema),
   userController.updateUser,
 );
 

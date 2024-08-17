@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { postController } from "../controller/postController";
-import { postSchema } from "../schema/postSchema";
+import { postCreateSchema } from "../schema/postCreateSchema";
+import { postUpdateSchema } from "../schema/postUpdateSchema";
 import { validateRequestSchema } from "../../../../../generic-middlewares/validateRequestSchema";
 import { validatePostExists } from "../middlewares/validatePostExists";
 
@@ -12,14 +13,14 @@ postRoutes.get("/:id", validatePostExists, postController.getPostById);
 
 postRoutes.post(
   "/",
-  validateRequestSchema(postSchema),
+  validateRequestSchema(postCreateSchema),
   postController.createPost,
 );
 
 postRoutes.put(
   "/:id",
   validatePostExists,
-  validateRequestSchema(postSchema),
+  validateRequestSchema(postUpdateSchema),
   postController.updatePost,
 );
 

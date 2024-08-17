@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-const userSchema = Joi.object({
+const userCreateSchema = Joi.object({
   name: Joi.string().max(100).required(),
   cpf: Joi.string().length(11).pattern(/^\d+$/).required(),
   address: Joi.string().max(255).required(),
@@ -10,4 +10,4 @@ const userSchema = Joi.object({
   zipCode: Joi.string().length(8).pattern(/^\d+$/).required(),
 });
 
-export { userSchema };
+export { userCreateSchema };
