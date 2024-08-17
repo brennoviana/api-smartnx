@@ -1,4 +1,3 @@
-import { UniqueConstraintError } from "sequelize";
 import { Post } from "../model/postModel";
 import { Request, Response } from "express";
 import { UseFulFunctions } from "../../../../../useFulFunctions/UseFulFunctions";
