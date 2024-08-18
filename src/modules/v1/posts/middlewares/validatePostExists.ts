@@ -7,7 +7,13 @@ async function validatePostExists(
   next: NextFunction,
 ) {
   try {
-    const post = await Post.findByPk(req.params.id);
+    const userId = req.body.postId || req.params.id;
+
+    if (!userId) {
+      return res.status(400).json({ error: "Post ID is required" });
+    }
+
+    const post = await Post.findByPk(userId);
     if (!post) {
       return res.status(404).send({ message: "Post not found." });
     }
