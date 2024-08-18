@@ -21,8 +21,8 @@ postRoutes.post(
 
 postRoutes.put(
   "/:id",
-  validatePostExists,
   validateRequestSchema(postUpdateSchema),
+  validatePostExists,
   validateUserExists,
   postController.updatePost,
 );
