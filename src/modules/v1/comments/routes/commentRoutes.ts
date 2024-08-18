@@ -3,6 +3,7 @@ import { commentController } from "../controller/commentController";
 import { validateRequestSchema } from "../../../../generic-middlewares/validateRequestSchema";
 import { validateUserExists } from "../../users/middlewares/validateUserExists";
 import { validatePostExists } from "../../posts/middlewares/validatePostExists";
+import { commentCreateSchema } from "../schema/commentCreateSchema";
 
 const commentRoutes = Router();
 
@@ -12,6 +13,7 @@ commentRoutes.get("/:id", commentController.getCommentById);
 
 commentRoutes.post(
   "/",
+  validateRequestSchema(commentCreateSchema),
   validateUserExists,
   validatePostExists,
   commentController.createComment,
