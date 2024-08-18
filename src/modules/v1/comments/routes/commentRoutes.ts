@@ -5,6 +5,7 @@ import { validateUserExists } from "../../users/middlewares/validateUserExists";
 import { validatePostExists } from "../../posts/middlewares/validatePostExists";
 import { validateCommentExists } from "../middlewares/validateCommentExists";
 import { commentCreateSchema } from "../schema/commentCreateSchema";
+import { commentUpdateSchema } from "../schema/commentUpdateSchema";
 
 const commentRoutes = Router();
 
@@ -24,14 +25,19 @@ commentRoutes.post(
   commentController.createComment,
 );
 
-// postRoutes.put(
-//   "/:id",
-//   validatePostExists,
-//   validateRequestSchema(postUpdateSchema),
-//   validateUserExists,
-//   postController.updatePost,
-// );
+commentRoutes.put(
+  "/:id",
+  validateRequestSchema(commentUpdateSchema),
+  validatePostExists,
+  validateUserExists,
+  validateCommentExists,
+  commentController.updateComment,
+);
 
-// postRoutes.delete("/:id", validatePostExists, postController.deletePost);
+commentRoutes.delete(
+  "/:id",
+  validateCommentExists,
+  commentController.deleteComment,
+);
 
 export { commentRoutes };

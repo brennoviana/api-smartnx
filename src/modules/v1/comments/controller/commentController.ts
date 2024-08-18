@@ -44,6 +44,43 @@ class CommentController {
         .send({ message: UseFulFunctions.getErrorMessage(error) });
     }
   }
+
+  async deleteComment(req: Request, res: Response) {
+    try {
+      const deleted = await Comment.destroy({
+        where: { id: req.params.id },
+      });
+      if (deleted) {
+        return res
+          .status(200)
+          .send({ message: "Comment successfully deleted." });
+      }
+      return res.status(400).send({ message: "Failed to delete comment." });
+    } catch (error) {
+      console.error(error);
+      return res
+        .status(500)
+        .send({ message: UseFulFunctions.getErrorMessage(error) });
+    }
+  }
+
+  async updateComment(req: Request, res: Response) {
+    try {
+      const [updated] = await Comment.update(req.body, {
+        where: { id: req.params.id },
+      });
+      if (updated) {
+        const updatedComment = await Comment.findByPk(req.params.id);
+        return res.status(200).json(updatedComment);
+      }
+      return res.status(400).send({ message: "Failed to update comment." });
+    } catch (error) {
+      console.error(error);
+      return res
+        .status(500)
+        .send({ message: UseFulFunctions.getErrorMessage(error) });
+    }
+  }
 }
 
 const commentController = new CommentController();
