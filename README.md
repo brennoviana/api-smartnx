@@ -48,6 +48,62 @@ Você pode baixar a collection do Postman para realizar as requests [aqui](docs/
 3. Selecione a aba "Upload Files".
 4. Escolha o arquivo `.json` baixado.
 
+### Passo a Passo: Criação de Usuário e Autenticação
+
+Após iniciar a aplicação, você precisará criar um usuário e realizar o login para obter o token de autenticação que será utilizado nas demais rotas protegidas.
+
+1. **Criação de Usuário**  
+   Para criar um novo usuário, envie uma requisição POST para a rota `/users` com os seguintes campos no corpo da requisição:
+
+**Exemplo de Requisição:**
+
+POST /users
+Content-Type: application/json
+
+```json
+{
+  "name": "Seu Nome",
+  "cpf": "12345678900",
+  "address": "Rua Exemplo",
+  "number": "123",
+  "city": "Cidade Exemplo",
+  "state": "EX",
+  "zipCode": "12345-678",
+  "username" : "Seu username",
+  "password" : "Sua senha"
+}
+```
+
+2. **Login para Obter o Token**
+Após criar o usuário, você precisará realizar o login para obter o token de autenticação. Envie uma requisição POST para a rota users/login com as credenciais de username e password.
+
+Exemplo de Requisição:
+
+POST /login
+Content-Type: application/json
+
+```json
+{
+  "username": "Seu username",
+  "password" : "Sua senha"
+}
+```
+
+**Exemplo de Resposta:**
+
+```json
+{
+  "token": "seu_token_aqui"
+}
+```
+
+3. **Utilizando o Token nas Requisições**
+Com o token em mãos, você pode realizar requisições para as rotas protegidas da aplicação. Para isso, inclua o token no cabeçalho de autorização da requisição:
+
+**Exemplo de Cabeçalho:**
+
+`Authorization: Bearer seu_token_aqui`
+
 ### Observações
 
 O arquivo `.env` foi incluído no repositório para facilitar o uso e configuração do projeto. Ele contém as variáveis de ambiente necessárias para a execução do banco de dados MySQL e configurações do Node.js.
