@@ -11,10 +11,16 @@ class UserController {
     try {
       const users = await User.findAll();
 
-      if (users.length == 0) {
+      if (users.length === 0) {
         return res.status(200).send({ message: "No users registered." });
       }
-      return res.status(200).send(users);
+
+      const usersWithoutPasswords = users.map((user) => {
+        const { password, ...userWithoutPassword } = user.get();
+        return userWithoutPassword;
+      });
+
+      return res.status(200).json(usersWithoutPasswords);
     } catch (error) {
       return res
         .status(500)
