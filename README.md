@@ -48,6 +48,15 @@ Você pode baixar a collection do Postman para realizar as requests [aqui](docs/
 3. Selecione a aba "Upload Files".
 4. Escolha o arquivo `.json` baixado.
 
+### Configurando o Ambiente no Postman
+
+1. No Postman, clique em "Environments" no painel à esquerda ou no ícone de engrenagem no canto superior direito e selecione "Manage Environments".
+2. Clique em "Add" para criar um novo ambiente.
+3. Nomeie o ambiente como `api-smartnx`.
+4. Adicione uma nova variável chamada `url_server` e defina o valor como `http://localhost:3000` (ou outro valor que corresponda ao seu ambiente).
+5. Adicione uma nova variável chamada `token`, onde você pode colar o token de autenticação obtido após o login.
+6. Salve as mudanças.
+
 ### Passo a Passo: Criação de Usuário e Autenticação
 
 Após iniciar a aplicação, você precisará criar um usuário e realizar o login para obter o token de autenticação que será utilizado nas demais rotas protegidas.
@@ -57,7 +66,7 @@ Após iniciar a aplicação, você precisará criar um usuário e realizar o log
 
 **Exemplo de Requisição:**
 
-POST /users
+POST {{url_server}}/users
 Content-Type: application/json
 
 ```json
@@ -79,7 +88,7 @@ Após criar o usuário, você precisará realizar o login para obter o token de 
 
 Exemplo de Requisição:
 
-POST users/login
+POST {{url_server}}/users/login
 Content-Type: application/json
 
 ```json

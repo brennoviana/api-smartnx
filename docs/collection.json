@@ -24,8 +24,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/users",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/users",
 							"host": [
 								"{{url_server}}"
 							],
@@ -53,8 +52,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/users/login",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/users/login",
 							"host": [
 								"{{url_server}}"
 							],
@@ -80,8 +78,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/users",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/users",
 							"host": [
 								"{{url_server}}"
 							],
@@ -113,8 +110,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/users/:id",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/users/:id",
 							"host": [
 								"{{url_server}}"
 							],
@@ -127,7 +123,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": "1"
 								}
 							]
 						}
@@ -155,8 +151,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/users/:id",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/users/:id",
 							"host": [
 								"{{url_server}}"
 							],
@@ -188,8 +183,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/users/:id",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/users/:id",
 							"host": [
 								"{{url_server}}"
 							],
@@ -242,8 +236,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/posts",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/posts",
 							"host": [
 								"{{url_server}}"
 							],
@@ -268,8 +261,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/posts",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/posts",
 							"host": [
 								"{{url_server}}"
 							],
@@ -301,8 +293,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/posts/:id",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/posts/:id",
 							"host": [
 								"{{url_server}}"
 							],
@@ -343,8 +334,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/posts/:id",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/posts/:id",
 							"host": [
 								"{{url_server}}"
 							],
@@ -385,8 +375,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/posts/:id",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/posts/:id",
 							"host": [
 								"{{url_server}}"
 							],
@@ -432,8 +421,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/comments",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/comments",
 							"host": [
 								"{{url_server}}"
 							],
@@ -458,8 +446,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/comments",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/comments",
 							"host": [
 								"{{url_server}}"
 							],
@@ -491,8 +478,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/comments/:id",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/comments/:id",
 							"host": [
 								"{{url_server}}"
 							],
@@ -533,8 +519,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/comments/:id",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/comments/:id",
 							"host": [
 								"{{url_server}}"
 							],
@@ -575,8 +560,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{url_server}}/api/v1/comments/:id",
-							"protocol": "http",
+							"raw": "{{url_server}}/api/v1/comments/:id",
 							"host": [
 								"{{url_server}}"
 							],
@@ -589,7 +573,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": ""
 								}
 							]
 						}
