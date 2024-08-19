@@ -23,7 +23,9 @@ class UserController {
 
   async getUserById(req: Request, res: Response) {
     try {
-      return res.status(200).json(req.user);
+      const userWithoutPassword = { ...req.user.get(), password: undefined };
+
+      return res.status(200).json(userWithoutPassword);
     } catch (error) {
       return res
         .status(500)
@@ -103,7 +105,7 @@ class UserController {
           .send({ message: "Invalid username or password" });
       }
 
-      if (user.get("password")) {
+      if (!user.get("password")) {
         return res
           .status(500)
           .send({ message: "Password not found for the user" });
