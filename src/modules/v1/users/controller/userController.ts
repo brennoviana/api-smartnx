@@ -10,6 +10,7 @@ class UserController {
   async getUsers(req: Request, res: Response) {
     try {
       const users = await User.findAll();
+
       if (users.length == 0) {
         return res.status(200).send({ message: "No users registered." });
       }
@@ -60,10 +61,12 @@ class UserController {
       const [updated] = await User.update(req.body, {
         where: { id: req.params.id },
       });
+
       if (updated) {
         const updatedUser = await User.findByPk(req.params.id);
         return res.status(200).json(updatedUser);
       }
+
       return res.status(400).send({ message: "Failed to update user." });
     } catch (error) {
       if (error instanceof UniqueConstraintError) {
@@ -80,9 +83,11 @@ class UserController {
       const deleted = await User.destroy({
         where: { id: req.params.id },
       });
+
       if (deleted) {
         return res.status(200).send({ message: "User successfully deleted." });
       }
+
       return res.status(400).send({ message: "Failed to delete user." });
     } catch (error) {
       return res
