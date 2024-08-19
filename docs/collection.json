@@ -10,17 +10,114 @@
 			"name": "Users",
 			"item": [
 				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"brenno\",\n    \"cpf\": \"22245673332\",\n    \"address\": \"Street\",\n    \"number\": \"100\",\n    \"city\": \"Springfield\",\n    \"state\": \"SP\",\n    \"zipCode\": \"12345678\",\n    \"username\" : \"brennouser\",\n    \"password\" : \"12345566\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url_server}}/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"brennouser\",\r\n    \"password\" : \"12345566\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url_server}}/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{url_server}}/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get User",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:3000/api/v1/users/:id",
+							"raw": "http://{{url_server}}/api/v1/users/:id",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{url_server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"v1",
@@ -30,7 +127,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "18"
+									"value": ""
 								}
 							]
 						}
@@ -41,10 +138,16 @@
 					"name": "Update  User",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Johnssss\",\r\n    \"cpf\": \"12345678912\",\r\n    \"address\": \"123 \",\r\n    \"number\": \"100\",\r\n    \"city\": \"Springfield\",\r\n    \"state\": \"SP\",\r\n    \"zip_code\": \"12345678\"\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"John\",\r\n    \"cpf\": \"12345678912\",\r\n    \"address\": \"123 \",\r\n    \"number\": \"100\",\r\n    \"city\": \"Springfield\",\r\n    \"state\": \"SP\",\r\n    \"zipCode\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -52,12 +155,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/v1/users/:id",
+							"raw": "http://{{url_server}}/api/v1/users/:id",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{url_server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"v1",
@@ -67,59 +169,8 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "18"
+									"value": "1"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create User",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"AAAAAAAAAAAAAAAAAAAAA\",\n    \"cpf\": \"12245678910\",\n    \"address\": \"123 Main Street\",\n    \"number\": \"100\",\n    \"city\": \"Springfield\",\n    \"state\": \"SP\",\n    \"zipCode\": \"12345678\"\n}\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/v1/users",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Users",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/api/v1/users",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"users"
 							]
 						}
 					},
@@ -129,14 +180,19 @@
 					"name": "Delete User",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:3000/api/v1/users/:id",
+							"raw": "http://{{url_server}}/api/v1/users/:id",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{url_server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"v1",
@@ -153,7 +209,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "13"
+									"value": "1"
 								}
 							]
 						}
@@ -166,21 +222,68 @@
 			"name": "Posts",
 			"item": [
 				{
-					"name": "Get Posts",
+					"name": "Create Post",
 					"request": {
-						"method": "GET",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"TESTE POST\",\r\n    \"content\": \"Teste content\",\r\n    \"userId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3000/api/v1/posts",
+							"raw": "http://{{url_server}}/api/v1/posts",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{url_server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"v1",
 								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{url_server}}/api/v1/posts",
+							"protocol": "http",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -190,74 +293,19 @@
 					"name": "Get Post",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/api/v1/posts",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"posts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Post",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"1 Sequelize\",\r\n    \"content\": \"This post explains how to use Sequelize to manage associations between models in a Node.js application.\",\r\n    \"userId\": 2,\r\n    \"createdAt\": \"2024-08-17T12:34:56.789Z\",\r\n    \"updatedAt\": \"2024-08-17T12:34:56.789Z\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
 							}
-						},
+						],
 						"url": {
-							"raw": "http://localhost:3000/api/v1/posts",
+							"raw": "http://{{url_server}}/api/v1/posts/:id",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{url_server}}"
 							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"posts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Post",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"1 Sequelize\",\r\n    \"content\": \"This post explains how to use Sequelize to manage associations between models in a Node.js application.\",\r\n    \"userId\": 2,\r\n    \"createdAt\": \"2024-08-17T12:34:56.789Z\",\r\n    \"updatedAt\": \"2024-08-17T12:34:56.789Z\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/v1/posts/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
 							"path": [
 								"api",
 								"v1",
@@ -267,7 +315,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": "1"
 								}
 							]
 						}
@@ -278,10 +326,16 @@
 					"name": "Update Post",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"1 Sequelize\",\r\n    \"content\": \"This post explains how to use Sequelize to manage associations between models in a Node.js application.\",\r\n    \"userId\": 2,\r\n}",
+							"raw": "{\r\n    \"title\": \"TESTE 2\",\r\n    \"content\": \"TESTE  2\",\r\n    \"userId\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -289,12 +343,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/v1/posts/:id",
+							"raw": "http://{{url_server}}/api/v1/posts/:id",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{url_server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"v1",
@@ -304,7 +357,49 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6"
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"1 Sequelize\",\r\n    \"content\": \"This post explains how to use Sequelize to manage associations between models in a Node.js application.\",\r\n    \"userId\": 2,\r\n    \"createdAt\": \"2024-08-17T12:34:56.789Z\",\r\n    \"updatedAt\": \"2024-08-17T12:34:56.789Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url_server}}/api/v1/posts/:id",
+							"protocol": "http",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
 								}
 							]
 						}
@@ -315,7 +410,193 @@
 		},
 		{
 			"name": "Comments",
-			"item": []
+			"item": [
+				{
+					"name": "Create Comments",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"This is a test.\",\r\n  \"postId\": 1,\r\n  \"userId\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url_server}}/api/v1/comments",
+							"protocol": "http",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{url_server}}/api/v1/comments",
+							"protocol": "http",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{url_server}}/api/v1/comments/:id",
+							"protocol": "http",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Comment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"This a test comment.\",\r\n  \"postId\": 1,\r\n  \"userId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url_server}}/api/v1/comments/:id",
+							"protocol": "http",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"1 Sequelize\",\r\n    \"content\": \"This post explains how to use Sequelize to manage associations between models in a Node.js application.\",\r\n    \"userId\": 2,\r\n    \"createdAt\": \"2024-08-17T12:34:56.789Z\",\r\n    \"updatedAt\": \"2024-08-17T12:34:56.789Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url_server}}/api/v1/comments/:id",
+							"protocol": "http",
+							"host": [
+								"{{url_server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
