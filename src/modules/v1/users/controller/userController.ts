@@ -54,7 +54,13 @@ class UserController {
       return res.status(201).json(userWithoutPassword);
     } catch (error) {
       if (error instanceof UniqueConstraintError) {
-        return res.status(409).send({ message: "CPF already exists." });
+        const duplicateField = error.errors[0].path;
+        if (duplicateField === "cpf") {
+          return res.status(409).send({ message: "CPF already exists." });
+        }
+        if (duplicateField === "username") {
+          return res.status(409).send({ message: "Username already exists." });
+        }
       }
       return res
         .status(500)

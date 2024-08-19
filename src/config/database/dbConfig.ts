@@ -15,7 +15,6 @@ export const sequelize = new Sequelize(
 export const connectToMySQL = async () => {
   try {
     await sequelize.authenticate();
-
     await sequelize.sync();
   } catch (error) {
     process.exit(1);
