@@ -86,7 +86,7 @@ Content-Type: application/json
 2. **Login para Obter o Token**
 Após criar o usuário, você precisará realizar o login para obter o token de autenticação. Envie uma requisição POST para a rota users/login com as credenciais de username e password.
 
-Exemplo de Requisição:
+**Exemplo de Requisição:**
 
 POST {{url_server}}/users/login
 Content-Type: application/json
