@@ -11,7 +11,6 @@ class PostController {
       }
       return res.status(200).send(posts);
     } catch (error) {
-      console.error(error);
       return res
         .status(500)
         .send({ message: UseFulFunctions.getErrorMessage(error) });
@@ -26,7 +25,6 @@ class PostController {
       }
       return res.status(200).json(post);
     } catch (error) {
-      console.error(error);
       return res
         .status(500)
         .send({ message: UseFulFunctions.getErrorMessage(error) });
@@ -38,7 +36,6 @@ class PostController {
       const newPost = await Post.create(req.body);
       return res.status(201).json(newPost);
     } catch (error) {
-      console.error(error);
       return res
         .status(500)
         .send({ message: UseFulFunctions.getErrorMessage(error) });
@@ -55,7 +52,6 @@ class PostController {
       }
       return res.status(400).send({ message: "Failed to delete post." });
     } catch (error) {
-      console.error(error);
       return res
         .status(500)
         .send({ message: UseFulFunctions.getErrorMessage(error) });
@@ -73,7 +69,6 @@ class PostController {
       }
       return res.status(400).send({ message: "Failed to update post." });
     } catch (error) {
-      console.error(error);
       return res
         .status(500)
         .send({ message: UseFulFunctions.getErrorMessage(error) });

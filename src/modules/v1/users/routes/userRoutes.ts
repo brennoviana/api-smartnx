@@ -26,4 +26,6 @@ userRoutes.put(
 
 userRoutes.delete("/:id", validateUserExists, userController.deleteUser);
 
+userRoutes.post("/login", userController.loginUser);
+
 export { userRoutes };

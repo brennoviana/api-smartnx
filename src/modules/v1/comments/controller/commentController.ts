@@ -11,7 +11,6 @@ class CommentController {
       }
       return res.status(200).send(comments);
     } catch (error) {
-      console.error(error);
       return res
         .status(500)
         .send({ message: UseFulFunctions.getErrorMessage(error) });
@@ -26,7 +25,6 @@ class CommentController {
       }
       return res.status(200).json(comment);
     } catch (error) {
-      console.error(error);
       return res
         .status(500)
         .send({ message: UseFulFunctions.getErrorMessage(error) });
@@ -38,7 +36,6 @@ class CommentController {
       const newComment = await Comment.create(req.body);
       return res.status(201).json(newComment);
     } catch (error) {
-      console.error(error);
       return res
         .status(500)
         .send({ message: UseFulFunctions.getErrorMessage(error) });
@@ -57,7 +54,6 @@ class CommentController {
       }
       return res.status(400).send({ message: "Failed to delete comment." });
     } catch (error) {
-      console.error(error);
       return res
         .status(500)
         .send({ message: UseFulFunctions.getErrorMessage(error) });
@@ -75,7 +71,6 @@ class CommentController {
       }
       return res.status(400).send({ message: "Failed to update comment." });
     } catch (error) {
-      console.error(error);
       return res
         .status(500)
         .send({ message: UseFulFunctions.getErrorMessage(error) });

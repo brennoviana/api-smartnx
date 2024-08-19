@@ -7,9 +7,7 @@ const PORT = config.portApi;
 const startServer = async () => {
   await connectToMySQL();
 
-  app.listen(PORT, () => {
-    console.log(`Server running at port ${PORT}`);
-  });
+  app.listen(PORT, () => {});
 };
 
 startServer();

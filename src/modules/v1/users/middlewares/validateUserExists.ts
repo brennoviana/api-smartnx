@@ -22,7 +22,6 @@ async function validateUserExists(
 
     next();
   } catch (error) {
-    console.error(error);
     return res
       .status(500)
       .send({ message: "An error occurred while verifying the user." });

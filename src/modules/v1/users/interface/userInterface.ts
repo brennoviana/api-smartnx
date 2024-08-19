@@ -7,6 +7,8 @@ export interface UserAttributes {
   city: string;
   state: string;
   zipCode: string;
+  password: string;
+  username: string;
   createdAt?: Date;
   updatedAt?: Date;
 }

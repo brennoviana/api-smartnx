@@ -2,6 +2,9 @@ import { UniqueConstraintError } from "sequelize";
 import { User } from "../model/userModel";
 import { Request, Response } from "express";
 import { UseFulFunctions } from "../../../../useFulFunctions/UseFulFunctions";
+import { config } from "../../../../config/env/envConfig";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 class UserController {
   async getUsers(req: Request, res: Response) {
@@ -12,7 +15,6 @@ class UserController {
       }
       return res.status(200).send(users);
     } catch (error) {
-      console.error(error);
       return res
         .status(500)
         .send({ message: UseFulFunctions.getErrorMessage(error) });
@@ -23,7 +25,6 @@ class UserController {
     try {
       return res.status(200).json(req.user);
     } catch (error) {
-      console.error(error);
       return res
         .status(500)
         .send({ message: UseFulFunctions.getErrorMessage(error) });
@@ -32,10 +33,17 @@ class UserController {
 
   async createUser(req: Request, res: Response) {
     try {
-      const newUser = await User.create(req.body);
-      return res.status(201).json(newUser);
+      const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+
+      const newUser = await User.create({
+        ...req.body,
+        password: hashedPassword,
+      });
+
+      const userWithoutPassword = { ...newUser.get(), password: undefined };
+
+      return res.status(201).json(userWithoutPassword);
     } catch (error) {
-      console.error(error);
       if (error instanceof UniqueConstraintError) {
         return res.status(409).send({ message: "CPF already exists." });
       }
@@ -56,7 +64,6 @@ class UserController {
       }
       return res.status(400).send({ message: "Failed to update user." });
     } catch (error) {
-      console.error(error);
       if (error instanceof UniqueConstraintError) {
         return res.status(409).send({ message: "CPF already exists." });
       }
@@ -76,10 +83,54 @@ class UserController {
       }
       return res.status(400).send({ message: "Failed to delete user." });
     } catch (error) {
-      console.error(error);
       return res
         .status(500)
         .send({ message: UseFulFunctions.getErrorMessage(error) });
+    }
+  }
+  async loginUser(req: Request, res: Response) {
+    try {
+      const { username, password } = req.body;
+
+      const user = await User.findOne({
+        where: { username },
+        attributes: ["id", "username", "password"],
+      });
+
+      if (!user) {
+        return res
+          .status(401)
+          .send({ message: "Invalid username or password" });
+      }
+
+      if (user.get("password")) {
+        return res
+          .status(500)
+          .send({ message: "Password not found for the user" });
+      }
+
+      const isPasswordValid = bcrypt.compareSync(
+        password,
+        user.get("password") as string,
+      );
+
+      if (!isPasswordValid) {
+        return res
+          .status(401)
+          .send({ message: "Invalid username or password" });
+      }
+
+      const token = jwt.sign(
+        { id: user.get("id"), username: user.get("username") },
+        config.jwtSecret,
+        { expiresIn: "1h" },
+      );
+
+      return res.status(200).json({ token });
+    } catch (error) {
+      return res
+        .status(500)
+        .send({ message: "An error occurred during login." });
     }
   }
 }

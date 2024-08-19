@@ -7,4 +7,5 @@ export const config = {
   mysqlHost: process.env.MYSQL_HOST as string,
   mysqlPort: process.env.MYSQL_PORT as string,
   portApi: process.env.PORT,
+  jwtSecret: process.env.JWT_SECRET as string,
 };

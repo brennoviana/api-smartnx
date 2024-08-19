@@ -42,6 +42,15 @@ User.init(
       type: DataTypes.STRING(8),
       allowNull: false,
     },
+    username: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+      unique: true,
+    },
+    password: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
