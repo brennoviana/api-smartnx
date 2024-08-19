@@ -98,6 +98,7 @@ Content-Type: application/json
 ```
 
 3. **Utilizando o Token nas Requisições**
+
 Com o token em mãos, você pode realizar requisições para as rotas protegidas da aplicação. Para isso, inclua o token no cabeçalho de autorização da requisição:
 
 **Exemplo de Cabeçalho:**
