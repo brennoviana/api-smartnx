@@ -79,7 +79,7 @@ Após criar o usuário, você precisará realizar o login para obter o token de 
 
 Exemplo de Requisição:
 
-POST /login
+POST users/login
 Content-Type: application/json
 
 ```json
