@@ -50,7 +50,7 @@ Você pode baixar a collection do Postman para realizar as requests [aqui](docs/
 
 ### Configurando o Ambiente no Postman
 
-1. No Postman, clique em "Environments" no painel à esquerda ou no ícone de engrenagem no canto superior direito e selecione "Manage Environments".
+1. No Postman, clique em "Environments" no painel à esquerda.
 2. Clique em "Add" para criar um novo ambiente.
 3. Nomeie o ambiente como `api-smartnx`.
 4. Adicione uma nova variável chamada `url_server` e defina o valor como `http://localhost:3000` (ou outro valor que corresponda ao seu ambiente).
