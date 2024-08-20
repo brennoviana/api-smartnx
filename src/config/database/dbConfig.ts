@@ -12,11 +12,20 @@ export const sequelize = new Sequelize(
   },
 );
 
+let retryCount = 0;
+const maxRetries = 3;
+
 export const connectToMySQL = async () => {
   try {
     await sequelize.authenticate();
     await sequelize.sync();
+    retryCount = 0;
   } catch (error) {
-    process.exit(1);
+    retryCount++;
+    if (retryCount < maxRetries) {
+      setTimeout(connectToMySQL, 5000);
+    } else {
+      process.exit(1);
+    }
   }
 };
