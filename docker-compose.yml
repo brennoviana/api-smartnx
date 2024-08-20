@@ -1,14 +1,4 @@
 services:
-  express:
-    build:
-      context: .
-    ports:
-      - "3000:3000"
-    networks:
-      - app-network
-    depends_on:
-      - mysql
-
   mysql:
     image: mysql:8.0
     container_name: mysql
@@ -22,6 +12,16 @@ services:
       - mysql_data:/var/lib/mysql
     networks:
       - app-network
+
+  express:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    depends_on:
+      - mysql
 
 networks:
   app-network:
