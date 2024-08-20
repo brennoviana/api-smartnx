@@ -75,8 +75,7 @@ class UserController {
       });
 
       if (updated) {
-        const updatedUser = await User.findByPk(req.params.id);
-        return res.status(200).json(updatedUser);
+        return res.status(200).send({ message: "User successfully updated." });
       }
 
       return res.status(400).send({ message: "Failed to update user." });
