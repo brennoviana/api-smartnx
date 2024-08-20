@@ -8,7 +8,7 @@ const startServer = async () => {
   await connectToMySQL();
 
   app.listen(PORT, () => {});
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}.`);
 };
 
 startServer();
